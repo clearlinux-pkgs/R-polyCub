@@ -1,5 +1,5 @@
 PKG_NAME := R-polyCub
-URL = https://cran.r-project.org/src/contrib/polyCub_0.7.0.tar.gz
+URL = https://cran.r-project.org/src/contrib/polyCub_0.7.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
