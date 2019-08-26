@@ -4,23 +4,23 @@
 #
 Name     : R-polyCub
 Version  : 0.7.1
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/polyCub_0.7.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/polyCub_0.7.1.tar.gz
 Summary  : Cubature over Polygonal Domains
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-polyCub-lib = %{version}-%{release}
+Requires: R-mvtnorm
 Requires: R-sp
+Requires: R-spatstat
+BuildRequires : R-mvtnorm
 BuildRequires : R-sp
+BuildRequires : R-spatstat
 BuildRequires : buildreq-R
 
 %description
-# polyCub <img src="man/figures/logo.png" align="right" alt="" width="120" />
-The [R](https://www.r-project.org/) package **polyCub** implements
-*cubature* (numerical integration) over *polygonal* domains.
-It solves the problem of integrating a continuously differentiable
-function f(x,y) over simple closed polygons.
+functions f(x,y) over simple closed polygonal domains.
 
 %package lib
 Summary: lib components for the R-polyCub package.
@@ -37,13 +37,13 @@ lib components for the R-polyCub package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1549596574
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1566839608
 
 %install
-export SOURCE_DATE_EPOCH=1549596574
+export SOURCE_DATE_EPOCH=1566839608
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -72,13 +72,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library polyCub|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc polyCub || :
 
 
 %files
@@ -124,4 +123,3 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/polyCub/libs/polyCub.so
 /usr/lib64/R/library/polyCub/libs/polyCub.so.avx2
-/usr/lib64/R/library/polyCub/libs/polyCub.so.avx512
