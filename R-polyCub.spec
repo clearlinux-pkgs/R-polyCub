@@ -4,23 +4,26 @@
 #
 Name     : R-polyCub
 Version  : 0.7.1
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/polyCub_0.7.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/polyCub_0.7.1.tar.gz
 Summary  : Cubature over Polygonal Domains
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-polyCub-lib = %{version}-%{release}
-Requires: R-mvtnorm
 Requires: R-sp
-Requires: R-spatstat
 BuildRequires : R-mvtnorm
 BuildRequires : R-sp
 BuildRequires : R-spatstat
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-functions f(x,y) over simple closed polygonal domains.
+# polyCub <img src="man/figures/logo.png" align="right" alt="" width="120" />
+The [R](https://www.r-project.org/) package **polyCub** implements
+*cubature* (numerical integration) over *polygonal* domains.
+It solves the problem of integrating a continuously differentiable
+function f(x,y) over simple closed polygons.
 
 %package lib
 Summary: lib components for the R-polyCub package.
@@ -38,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566839608
+export SOURCE_DATE_EPOCH=1571876840
 
 %install
-export SOURCE_DATE_EPOCH=1566839608
+export SOURCE_DATE_EPOCH=1571876840
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
