@@ -4,7 +4,7 @@
 #
 Name     : R-polyCub
 Version  : 0.8.1
-Release  : 42
+Release  : 43
 URL      : https://cran.r-project.org/src/contrib/polyCub_0.8.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/polyCub_0.8.1.tar.gz
 Summary  : Cubature over Polygonal Domains
